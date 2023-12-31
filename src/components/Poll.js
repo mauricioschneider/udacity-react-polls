@@ -5,6 +5,9 @@ import { formatPoll, formatDate } from "../utils/helpers";
 
 const Poll = (props) => {
   const { poll } = props;
+
+  if (!poll) return;
+
   return (
     <li className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
       <div className="flex w-full items-center justify-between space-x-6 p-6">
@@ -44,12 +47,18 @@ const Poll = (props) => {
   );
 };
 
-const mapStateToProps = ({ users, polls }, { id }) => {
+const mapStateToProps = ({ users, polls }, { id, typeFilter }) => {
   const poll = polls[id];
   const author = users[poll.author];
 
+  let formattedPoll = poll ? formatPoll(poll, author) : null;
+
+  if (formattedPoll && formattedPoll.type !== typeFilter) {
+    formattedPoll = null;
+  }
+
   return {
-    poll: poll ? formatPoll(poll, author) : null,
+    poll: formattedPoll,
   };
 };
 

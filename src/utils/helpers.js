@@ -4,17 +4,22 @@ export function formatDate(timestamp) {
   return time.substr(0, 5) + time.slice(-2) + " | " + d.toLocaleDateString();
 }
 
-export function formatPoll(poll, author) {
+export function formatPoll(poll, author, authedUser) {
   const { id, timestamp } = poll;
   const { name, avatarURL } = author;
 
-  const votes = poll.optionOne.votes.length + poll.optionTwo.votes.length;
+  const allVotes = poll.optionOne.votes.concat(poll.optionTwo.votes);
+  const hasVoted = allVotes.includes(authedUser);
+
+  console.log(poll);
 
   return {
     name,
     id,
     timestamp,
     avatar: avatarURL,
-    votes,
+    votes: allVotes.length,
+    hasVoted,
+    type: hasVoted ? "done" : "new",
   };
 }
