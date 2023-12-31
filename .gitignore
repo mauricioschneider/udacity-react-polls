@@ -151,3 +151,6 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Auth0 config file
+auth_config.json

@@ -6,10 +6,7 @@ import { formatPoll, formatDate } from "../utils/helpers";
 const Poll = (props) => {
   const { poll } = props;
   return (
-    <li
-      key={poll.id}
-      className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
-    >
+    <li className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
       <div className="flex w-full items-center justify-between space-x-6 p-6">
         <div className="flex-1 truncate">
           <div className="flex items-center space-x-3">
@@ -17,10 +14,12 @@ const Poll = (props) => {
               {poll.name}
             </h3>
             <span className="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-              {formatDate(poll.timestamp)}
+              Votes: {poll.votes}
             </span>
           </div>
-          <p className="mt-1 truncate text-sm text-gray-500">{poll.title}</p>
+          <p className="mt-1 truncate text-sm text-gray-500">
+            {formatDate(poll.timestamp)}
+          </p>
         </div>
         <img
           className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
