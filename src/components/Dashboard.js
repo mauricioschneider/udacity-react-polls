@@ -1,4 +1,5 @@
-import PollsPage from "./PollsPage";
+import { connect } from "react-redux";
+import PollsSection from "./PollsSection";
 
 const Dashboard = () => {
   return (
@@ -11,7 +12,7 @@ const Dashboard = () => {
             </h3>
           </div>
 
-          <PollsPage />
+          <PollsSection />
 
           <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
             <h3 className="text-base font-semibold leading-6 text-gray-900">
@@ -19,11 +20,11 @@ const Dashboard = () => {
             </h3>
           </div>
 
-          <PollsPage />
+          <PollsSection />
         </div>
       </main>
     </div>
   );
 };
 
-export default Dashboard;
+export default connect()(Dashboard);

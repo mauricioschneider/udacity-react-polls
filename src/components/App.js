@@ -1,10 +1,16 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { handleInitialData } from "../actions/shared";
 
 import Nav from "./Nav";
 import Dashboard from "./Dashboard";
 
-function App() {
+function App(props) {
+  useEffect(() => {
+    props.dispatch(handleInitialData());
+  }, []);
   return (
     <Fragment>
       <Nav />
@@ -15,4 +21,6 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = () => {};
+
+export default connect(mapStateToProps)(App);
