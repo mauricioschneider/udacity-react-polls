@@ -8,6 +8,7 @@ import { handleInitialData } from "../actions/shared";
 import Nav from "./Nav";
 import Dashboard from "./Dashboard";
 import Loading from "./Loading";
+import { setAuthedUser } from "../actions/authedUser";
 
 function App(props) {
   const { isLoading, error, user, isAuthenticated, loginWithRedirect, logout } =
@@ -29,6 +30,8 @@ function App(props) {
 
   if (!isAuthenticated) {
     loginWithRedirect();
+  } else {
+    props.dispatch(setAuthedUser(user.name));
   }
 
   return (

@@ -154,3 +154,4 @@ yarn-error.log*
 
 # Auth0 config file
 auth_config.json
+test_user.json
