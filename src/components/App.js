@@ -6,14 +6,12 @@ import Dashboard from "./Dashboard";
 
 function App() {
   return (
-    <>
-      <Fragment>
-        <Nav />
-        <Routes>
-          <Route exact path="/" element={<Dashboard />} />
-        </Routes>
-      </Fragment>
-    </>
+    <Fragment>
+      <Nav />
+      <Routes>
+        <Route exact path="/" element={<Dashboard />} />
+      </Routes>
+    </Fragment>
   );
 }
 
