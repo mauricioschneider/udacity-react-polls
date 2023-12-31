@@ -1,5 +1,7 @@
 # udacity-react-polls
 
+Final project for the Udacity React nanodegree. Scaffold built with create-react-app, which is no longer supported, but was used in the course.
+
 ## Available Scripts
 
 In the project directory, you can run:
