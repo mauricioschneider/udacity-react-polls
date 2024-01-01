@@ -42,8 +42,8 @@ function App(props) {
       {isDataReady === false ? null : (
         <Routes>
           <Route exact path="/" element={<Dashboard />} />
-          <Route path="/poll/:id" element={<PollPage />} />
-          <Route path="/poll/new" element={<NewPoll />} />
+          <Route path="/questions/:id" element={<PollPage />} />
+          <Route path="/add" element={<NewPoll />} />
         </Routes>
       )}
     </Fragment>

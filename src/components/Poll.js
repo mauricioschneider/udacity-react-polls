@@ -35,7 +35,7 @@ const Poll = (props) => {
         <div className="-mt-px flex divide-x divide-gray-200">
           <div className="flex w-0 flex-1">
             <Link
-              to={`/poll/${poll.id}`}
+              to={`/questions/${poll.id}`}
               className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
             >
               <EyeIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
