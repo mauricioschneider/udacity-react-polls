@@ -26,13 +26,13 @@ export function handleAnswerPoll(info) {
     const { qid, answer } = info;
 
     dispatch(showLoading());
+    dispatch(answerPoll({ qid, answer, authedUser }));
 
     return saveQuestionAnswer({
       qid,
       answer,
       authedUser,
     }).then(() => {
-      dispatch(answerPoll({ qid, answer, authedUser }));
       dispatch(hideLoading());
     });
   };
