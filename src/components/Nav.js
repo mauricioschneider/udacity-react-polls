@@ -7,6 +7,7 @@ import logo from "../assets/logo.svg";
 import loader from "../assets/6-dots-rotate.svg";
 
 import { connect } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -15,11 +16,20 @@ function classNames(...classes) {
 const Nav = (props) => {
   const location = useLocation();
 
+  const { logout } = useAuth0();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout({ logoutParams: { returnTo: window.location.origin } });
+  };
+
   const navigation = [
     { name: "All Polls", href: "/", current: true },
     { name: "Leaderboard", href: "/leaderboard", current: false },
   ];
-  const userNavigation = [{ name: "Sign out", href: "#" }];
+  const userNavigation = [
+    { name: "Sign out", href: "#", onClick: handleLogout },
+  ];
 
   const { user, loadingUser } = props;
 
@@ -111,9 +121,10 @@ const Nav = (props) => {
                             {({ active }) => (
                               <a
                                 href={item.href}
+                                onClick={item.onClick ? item.onClick : null}
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                                  "block h-full px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
                                 {item.name}
