@@ -9,6 +9,7 @@ import { handleInitialData } from "../actions/shared";
 import Nav from "./Nav";
 import Dashboard from "./Dashboard";
 import PollPage from "./PollPage";
+import Leaderboard from "./Leaderboard";
 import { setAuthedUser } from "../actions/authedUser";
 import NewPoll from "./NewPoll";
 
@@ -44,6 +45,7 @@ function App(props) {
           <Route exact path="/" element={<Dashboard />} />
           <Route path="/questions/:id" element={<PollPage />} />
           <Route path="/add" element={<NewPoll />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       )}
     </Fragment>
