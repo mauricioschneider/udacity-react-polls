@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading-bar";
@@ -10,44 +10,46 @@ import Nav from "./Nav";
 import Dashboard from "./Dashboard";
 import PollPage from "./PollPage";
 import Leaderboard from "./Leaderboard";
+import Loading from "./Loading";
 import { setAuthedUser } from "../actions/authedUser";
 import NewPoll from "./NewPoll";
 
 function App(props) {
-  const { isLoading, error, user, isAuthenticated, loginWithRedirect } =
-    useAuth0();
+  const { isLoading, user, isAuthenticated, loginWithRedirect } = useAuth0();
 
   const { isDataReady } = props;
 
   useEffect(() => {
-    if (!isLoading) {
-      props.dispatch(handleInitialData());
-    }
-  }, [isLoading]);
+    const checkAuth = async () => {
+      if (!isLoading && !isAuthenticated) {
+        await loginWithRedirect();
+      }
 
-  if (error) {
-    // auth0 error
-  }
+      if (!isLoading && isAuthenticated) {
+        props.dispatch(setAuthedUser(user.name));
+        props.dispatch(handleInitialData());
+      }
+    };
 
-  if (!isAuthenticated) {
-    props.dispatch(setAuthedUser("tylermcginnis"));
-    //return loginWithRedirect();
-  } else {
-    props.dispatch(setAuthedUser(user.name));
-  }
+    checkAuth();
+  }, [isLoading, isAuthenticated]);
 
   return (
     <Fragment>
       <LoadingBar />
-      <Nav />
-      {isDataReady === false ? null : (
-        <Routes>
-          <Route exact path="/" element={<Dashboard />} />
-          <Route path="/questions/:id" element={<PollPage />} />
-          <Route path="/add" element={<NewPoll />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-        </Routes>
-      )}
+      {isLoading === false &&
+        isAuthenticated === true &&
+        isDataReady === true && (
+          <Fragment>
+            <Nav />
+            <Routes>
+              <Route exact path="/" element={<Dashboard />} />
+              <Route path="/questions/:id" element={<PollPage />} />
+              <Route path="/add" element={<NewPoll />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+            </Routes>
+          </Fragment>
+        )}
     </Fragment>
   );
 }
