@@ -19,5 +19,6 @@ export function formatPoll(poll, author, authedUser) {
     votes: allVotes.length,
     hasVoted,
     type: hasVoted ? "done" : "new",
+    options: [poll.optionOne, poll.optionTwo],
   };
 }
