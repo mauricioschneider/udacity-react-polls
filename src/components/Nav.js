@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/20/solid";
@@ -13,6 +13,8 @@ function classNames(...classes) {
 }
 
 const Nav = (props) => {
+  const location = useLocation();
+
   const navigation = [
     { name: "All Polls", href: "/", current: true },
     { name: "Leaderboard", href: "/leaderboard", current: false },
@@ -49,12 +51,12 @@ const Nav = (props) => {
                       key={item.name}
                       to={item.href}
                       className={classNames(
-                        item.current
+                        location.pathname === item.href
                           ? "bg-gray-900 text-white"
                           : "text-gray-300 hover:bg-gray-700 hover:text-white",
                         "rounded-md px-3 py-2 text-sm font-medium"
                       )}
-                      aria-current={item.current ? "page" : undefined}
+                      aria-current={location ? "page" : undefined}
                     >
                       {item.name}
                     </Link>
@@ -135,12 +137,12 @@ const Nav = (props) => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current
+                    location
                       ? "bg-gray-900 text-white"
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.current ? "page" : undefined}
+                  aria-current={location ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
