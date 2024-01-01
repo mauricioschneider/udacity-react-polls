@@ -1,4 +1,5 @@
 import { saveQuestionAnswer, saveQuestion } from "../utils/api";
+import { saveAnswer, savePoll } from "./users";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 export const RECEIVE_POLLS = "RECEIVE_POLLS";
@@ -34,13 +35,13 @@ export function handleAnswerPoll(info) {
       answer,
       authedUser,
     }).then(() => {
+      dispatch(saveAnswer({ qid, answer, authedUser }));
       dispatch(hideLoading());
     });
   };
 }
 
 function addPoll(poll) {
-  console.log(`addPoll: `, poll);
   return {
     type: ADD_POLL,
     poll,
@@ -58,7 +59,10 @@ export function handleAddPoll(newPoll) {
       optionTwoText: newPoll.optionTwoText,
       author: authedUser,
     })
-      .then((poll) => dispatch(addPoll(poll)))
+      .then((poll) => {
+        dispatch(addPoll(poll));
+        dispatch(savePoll(poll));
+      })
       .then(() => dispatch(hideLoading()));
   };
 }
