@@ -10,6 +10,7 @@ import Nav from "./Nav";
 import Dashboard from "./Dashboard";
 import PollPage from "./PollPage";
 import { setAuthedUser } from "../actions/authedUser";
+import NewPoll from "./NewPoll";
 
 function App(props) {
   const { isLoading, error, user, isAuthenticated, loginWithRedirect } =
@@ -41,7 +42,8 @@ function App(props) {
       {isDataReady === false ? null : (
         <Routes>
           <Route exact path="/" element={<Dashboard />} />
-          <Route exact path="/poll/:id" element={<PollPage />} />
+          <Route path="/poll/:id" element={<PollPage />} />
+          <Route path="/poll/new" element={<NewPoll />} />
         </Routes>
       )}
     </Fragment>

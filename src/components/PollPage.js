@@ -62,6 +62,17 @@ const PollPage = (props) => {
             </div>
           </div>
         </div>
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              Would You Rather
+            </p>
+          </div>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">
+            Choose an answer carefully. You won't be able to modify your answer
+            once you vote.
+          </p>
+        </div>
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="isolate container mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 md:max-w-2xl md:grid-cols-2 lg:max-w-2xl xl:mx-0 xl:max-w-none xl:grid-cols-2">
             {poll.options.map((option, index) => (
