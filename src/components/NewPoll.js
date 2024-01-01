@@ -1,7 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { handleAddPoll } from "../actions/polls";
+import { connect } from "react-redux";
 
-const NewPoll = () => {
+const NewPoll = (props) => {
+  const navigate = useNavigate();
+  const { dispatch } = props;
+
   const [optionOne, setOptionOne] = useState("");
   const [optionTwo, setOptionTwo] = useState("");
   const [isEmpty, setIsEmpty] = useState(true);
@@ -22,12 +27,32 @@ const NewPoll = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    try {
+      dispatch(
+        handleAddPoll({
+          optionOneText: optionOne,
+          optionTwoText: optionTwo,
+        })
+      );
+    } catch (e) {
+      console.log(e);
+    }
+
+    setOptionOne("");
+    setOptionTwo("");
+
+    navigate("/");
+  };
+
   return (
     <div className="min-h-full">
       <main>
         <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
           <div className="mx-auto flex max-w-2xl items-center justify-between gap-x-8 lg:mx-0 lg:max-w-none">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="space-y-12">
                 <div className="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-900/10 pb-12 md:grid-cols-3">
                   <div>
@@ -104,4 +129,4 @@ const NewPoll = () => {
   );
 };
 
-export default NewPoll;
+export default connect()(NewPoll);
