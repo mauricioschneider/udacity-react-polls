@@ -8,17 +8,17 @@ import loader from "../assets/6-dots-rotate.svg";
 
 import { connect } from "react-redux";
 
-const navigation = [
-  { name: "All Polls", href: "/", current: true },
-  { name: "Leaderboard", href: "#", current: false },
-];
-const userNavigation = [{ name: "Sign out", href: "#" }];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Nav = (props) => {
+  const navigation = [
+    { name: "All Polls", href: "/", current: true },
+    { name: "Leaderboard", href: "/leaderboard", current: false },
+  ];
+  const userNavigation = [{ name: "Sign out", href: "#" }];
+
   const { user, loadingUser } = props;
 
   return (
