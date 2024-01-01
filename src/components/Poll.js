@@ -47,11 +47,11 @@ const Poll = (props) => {
   );
 };
 
-const mapStateToProps = ({ users, polls }, { id, typeFilter }) => {
+const mapStateToProps = ({ users, polls, authedUser }, { id, typeFilter }) => {
   const poll = polls[id];
   const author = users[poll.author];
 
-  let formattedPoll = poll ? formatPoll(poll, author) : null;
+  let formattedPoll = poll ? formatPoll(poll, author, authedUser) : null;
 
   if (formattedPoll && formattedPoll.type !== typeFilter) {
     formattedPoll = null;

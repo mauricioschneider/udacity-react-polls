@@ -11,8 +11,6 @@ export function formatPoll(poll, author, authedUser) {
   const allVotes = poll.optionOne.votes.concat(poll.optionTwo.votes);
   const hasVoted = allVotes.includes(authedUser);
 
-  console.log(poll);
-
   return {
     name,
     id,
