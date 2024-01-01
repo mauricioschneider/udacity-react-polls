@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/20/solid";
@@ -8,7 +9,7 @@ import loader from "../assets/6-dots-rotate.svg";
 import { connect } from "react-redux";
 
 const navigation = [
-  { name: "All Polls", href: "#", current: true },
+  { name: "All Polls", href: "/", current: true },
   { name: "Leaderboard", href: "#", current: false },
 ];
 const userNavigation = [{ name: "Sign out", href: "#" }];
@@ -19,7 +20,7 @@ function classNames(...classes) {
 
 const Nav = (props) => {
   const { user, loadingUser } = props;
-  console.log("loadingUser:", loadingUser);
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -44,9 +45,9 @@ const Nav = (props) => {
                 </div>
                 <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
-                      href={item.href}
+                      to={item.href}
                       className={classNames(
                         item.current
                           ? "bg-gray-900 text-white"
@@ -56,7 +57,7 @@ const Nav = (props) => {
                       aria-current={item.current ? "page" : undefined}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>

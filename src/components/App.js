@@ -8,6 +8,7 @@ import { handleInitialData } from "../actions/shared";
 
 import Nav from "./Nav";
 import Dashboard from "./Dashboard";
+import PollPage from "./PollPage";
 import { setAuthedUser } from "../actions/authedUser";
 
 function App(props) {
@@ -40,6 +41,7 @@ function App(props) {
       {isDataReady === false ? null : (
         <Routes>
           <Route exact path="/" element={<Dashboard />} />
+          <Route exact path="/poll/:id" element={<PollPage />} />
         </Routes>
       )}
     </Fragment>
