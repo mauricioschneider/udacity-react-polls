@@ -18,7 +18,7 @@ const PollsSection = (props) => {
 
 const mapStateToProps = ({ polls }) => ({
   pollIds: Object.keys(polls).sort(
-    (a, b) => (polls[b].timestamp = polls[a].timestamp)
+    (a, b) => polls[b].timestamp - polls[a].timestamp
   ),
 });
 
