@@ -2,6 +2,16 @@
 
 Final project for the Udacity React nanodegree. Scaffold built with create-react-app, which is no longer supported, but was used in the course.
 
+## Dependencies
+
+### Auth0
+
+This project uses Auth0 to handle authentication. Rename `auth_config.json.example` to `auth_config.json`, and replace the placeholder value with the configuration values for your Auth0 application.
+
+### Packages
+
+To install all dependencies, run `npm install`
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -28,3 +38,19 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Screenshots
+
+### Login
+
+### Dashboard
+
+### Poll View
+
+### Poll View After Voting
+
+### New Poll Form
+
+### Leaderboard
+
+### Logout Button
