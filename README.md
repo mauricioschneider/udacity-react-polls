@@ -6,7 +6,7 @@ Final project for the Udacity React nanodegree. Scaffold built with create-react
 
 ### Auth0
 
-This project uses Auth0 to handle authentication. Rename `auth_config.json.example` to `auth_config.json`, and replace the placeholder value with the configuration values for your Auth0 application.
+This project uses Auth0 to handle authentication. Rename `auth_config.json.example` to `auth_config.json`, and replace the placeholder values with the configuration values for your Auth0 application.
 
 ### Packages
 
@@ -41,30 +41,30 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Screenshots
 
-![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/1-login.png?raw=true)
-
 ### Login
 
-![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/2-dashboard.png?raw=true)
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/1-login.png?raw=true)
 
 ### Dashboard
 
-![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/3-poll-view.png?raw=true)
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/2-dashboard.png?raw=true)
 
 ### Poll View
 
-![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/4-poll-view-voted.png?raw=true)
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/3-poll-view.png?raw=true)
 
 ### Poll View After Voting
 
-![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/5-new-poll.png?raw=true)
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/4-poll-view-voted.png?raw=true)
 
 ### New Poll Form
 
-![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/6-leaderboard.png?raw=true)
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/5-new-poll.png?raw=true)
 
 ### Leaderboard
 
-![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/7-logout-button.png?raw=true)
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/6-leaderboard.png?raw=true)
 
 ### Logout Button
+
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/7-logout-button.png?raw=true)
