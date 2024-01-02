@@ -10,14 +10,13 @@ import Nav from "./Nav";
 import Dashboard from "./Dashboard";
 import PollPage from "./PollPage";
 import Leaderboard from "./Leaderboard";
-import Loading from "./Loading";
 import { setAuthedUser } from "../actions/authedUser";
 import NewPoll from "./NewPoll";
 
 function App(props) {
   const { isLoading, user, isAuthenticated, loginWithRedirect } = useAuth0();
 
-  const { isDataReady } = props;
+  const { isDataReady, dispatch } = props;
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -26,13 +25,13 @@ function App(props) {
       }
 
       if (!isLoading && isAuthenticated) {
-        props.dispatch(setAuthedUser(user.name));
-        props.dispatch(handleInitialData());
+        dispatch(setAuthedUser(user.name));
+        dispatch(handleInitialData());
       }
     };
 
     checkAuth();
-  }, [isLoading, isAuthenticated]);
+  }, [dispatch, user, loginWithRedirect, isLoading, isAuthenticated]);
 
   return (
     <Fragment>

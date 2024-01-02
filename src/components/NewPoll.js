@@ -9,7 +9,6 @@ const NewPoll = (props) => {
 
   const [optionOne, setOptionOne] = useState("");
   const [optionTwo, setOptionTwo] = useState("");
-  const [isEmpty, setIsEmpty] = useState(true);
 
   const handleChange = (e) => {
     const text = e.target.value;
@@ -19,27 +18,17 @@ const NewPoll = (props) => {
     } else {
       setOptionTwo(text);
     }
-
-    if (optionOne.length > 0 && optionTwo.length > 0) {
-      setIsEmpty(false);
-    } else {
-      setIsEmpty(true);
-    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      dispatch(
-        handleAddPoll({
-          optionOneText: optionOne,
-          optionTwoText: optionTwo,
-        })
-      );
-    } catch (e) {
-      console.log(e);
-    }
+    dispatch(
+      handleAddPoll({
+        optionOneText: optionOne,
+        optionTwoText: optionTwo,
+      })
+    );
 
     setOptionOne("");
     setOptionTwo("");
@@ -75,6 +64,7 @@ const NewPoll = (props) => {
                       <div className="mt-2">
                         <textarea
                           id="optionOne"
+                          data-testid="optionOne"
                           name="optionOne"
                           value={optionOne}
                           onChange={handleChange}
@@ -94,6 +84,7 @@ const NewPoll = (props) => {
                       <div className="mt-2">
                         <textarea
                           id="optionTwo"
+                          data-testid="optionTwo"
                           name="optionTwo"
                           value={optionTwo}
                           onChange={handleChange}
@@ -114,7 +105,8 @@ const NewPoll = (props) => {
                   Cancel
                 </Link>
                 <button
-                  disabled={isEmpty}
+                  disabled={optionOne === "" || optionTwo === ""}
+                  data-testid="submit"
                   type="submit"
                   className="disabled:text-slate-500 disabled:border-slate-200 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
