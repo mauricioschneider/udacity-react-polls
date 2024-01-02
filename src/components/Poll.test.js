@@ -1,4 +1,3 @@
-import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../utils/test-helpers";
 
 import Dashboard from "./Dashboard";
