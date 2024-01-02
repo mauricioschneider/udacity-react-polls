@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { CheckIcon } from "@heroicons/react/20/solid";
 
 import { formatDate, formatPoll } from "../utils/helpers";
 import { handleAnswerPoll } from "../actions/polls";
@@ -98,19 +99,47 @@ const PollPage = (props) => {
                 <p className="mb-auto text-sm leading-6 text-gray-600 poll-text">
                   {option.text}
                 </p>
-                <button
-                  onClick={handleVote}
-                  value={index === 0 ? "optionOne" : "optionTwo"}
-                  disabled={poll.hasVoted}
-                  className={classNames(
-                    option.votes.includes(authedUser)
-                      ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-500"
-                      : "text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300",
-                    "mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  )}
-                >
-                  {poll.hasVoted ? "Vote casted" : "Cast vote"}
-                </button>
+                {!poll.hasVoted && (
+                  <button
+                    onClick={handleVote}
+                    value={index === 0 ? "optionOne" : "optionTwo"}
+                    disabled={poll.hasVoted}
+                    className={classNames(
+                      option.votes.includes(authedUser)
+                        ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-500"
+                        : "text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300",
+                      "mb-auto mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    )}
+                  >
+                    {poll.hasVoted ? "Vote casted" : "Cast vote"}
+                  </button>
+                )}
+                {poll.hasVoted && (
+                  <div className="mb-auto">
+                    {option.votes.length > 0 && (
+                      <>
+                        <h5 className="mt-4 p-2 font-semibold text-gray-900">
+                          Votes
+                        </h5>
+                        <ul className=" space-y-3 text-sm leading-6 text-gray-600">
+                          {option.votes.map((feature) => (
+                            <li key={feature} className="flex gap-x-3">
+                              <CheckIcon
+                                className="h-6 w-5 flex-none text-indigo-600"
+                                aria-hidden="true"
+                              />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                    <p className="mt-4 text-xs">
+                      {((option.votes.length / poll.votes) * 100).toFixed(2)} %
+                      of votes
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
