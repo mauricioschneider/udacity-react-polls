@@ -116,8 +116,10 @@ const Nav = (props) => {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="ml-3">
-                          <div className="text-sm font-medium">{user.name}</div>
+                        <div className="ml-3 p-2">
+                          <div className="text-sm font-medium">
+                            User: {user.name}
+                          </div>
                         </div>
                         {userNavigation.map((item) => (
                           <Menu.Item key={item.name}>

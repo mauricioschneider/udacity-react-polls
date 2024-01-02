@@ -10,6 +10,7 @@ import Nav from "./Nav";
 import Dashboard from "./Dashboard";
 import PollPage from "./PollPage";
 import Leaderboard from "./Leaderboard";
+import NotFound from "./NotFound";
 import { setAuthedUser } from "../actions/authedUser";
 import NewPoll from "./NewPoll";
 
@@ -48,6 +49,7 @@ function App(props) {
               <Route path="/questions/:id" element={<PollPage />} />
               <Route path="/add" element={<NewPoll />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Fragment>
         )}
