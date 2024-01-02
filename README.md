@@ -41,16 +41,30 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Screenshots
 
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/1-login.png?raw=true)
+
 ### Login
+
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/2-dashboard.png?raw=true)
 
 ### Dashboard
 
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/3-poll-view.png?raw=true)
+
 ### Poll View
+
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/4-poll-view-voted.png?raw=true)
 
 ### Poll View After Voting
 
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/5-new-poll.png?raw=true)
+
 ### New Poll Form
 
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/6-leaderboard.png?raw=true)
+
 ### Leaderboard
+
+![](https://github.com/mauricioschneider/udacity-react-polls/blob/main/docs/images/7-logout-button.png?raw=true)
 
 ### Logout Button
