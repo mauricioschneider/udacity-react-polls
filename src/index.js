@@ -11,34 +11,17 @@ import App from "./components/App";
 import middleware from "./middleware";
 import reducer from "./reducers";
 
-// Auth0 setup
-const useOnRedirectCallback = (appState) => {
-  const navigate = useNavigate();
-  const navigateTo =
-    appState && appState.returnTo
-      ? appState.returnTo
-      : window.location.pathname;
-
-  navigate(navigateTo);
-};
-
-const auth0Config = getConfig();
-
-const providerConfig = {
-  domain: auth0Config.domain,
-  clientId: auth0Config.clientId,
-  useOnRedirectCallback,
-  authorizationParams: {
-    redirect_uri: window.location.origin,
-    ...(auth0Config.audience ? { audience: auth0Config.audience } : null),
-  },
-};
+const { domain, clientId } = getConfig();
 
 const store = configureStore({ reducer, middleware });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Auth0Provider {...providerConfig}>
+  <Auth0Provider
+    domain={domain}
+    clientId={clientId}
+    authorizationParams={{ redirect_uri: window.location.origin }}
+  >
     <Provider store={store}>
       <BrowserRouter>
         <App />
