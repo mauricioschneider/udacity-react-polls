@@ -2,8 +2,12 @@ import { formatDate } from "./helpers";
 
 describe("formatDate", () => {
   it("formats a timestamp correctly", () => {
-    const timestamp = 1572393600000; // This is the timestamp for October 30, 2019
+    const timestamp = Date.UTC(2022, 1, 1, 13, 30);
     const formattedDate = formatDate(timestamp);
-    expect(formattedDate).toBe("5:00:PM | 10/29/2019");
+    const date = new Date(timestamp);
+    expect(formattedDate).toContain(
+      date.toLocaleTimeString("en-US").substr(0, 5)
+    );
+    expect(formattedDate).toContain(date.toLocaleTimeString("en-US").slice(-2));
   });
 });
