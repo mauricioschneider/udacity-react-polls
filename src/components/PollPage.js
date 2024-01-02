@@ -1,5 +1,10 @@
 import { connect } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  redirect,
+} from "react-router-dom";
 import { CheckIcon } from "@heroicons/react/20/solid";
 
 import { formatDate, formatPoll } from "../utils/helpers";
@@ -23,6 +28,10 @@ const withRouter = (Component) => {
 
 const PollPage = (props) => {
   const { dispatch, poll, authedUser } = props;
+
+  if (!poll) {
+    return redirect("/404");
+  }
 
   const handleVote = (e) => {
     e.preventDefault();
@@ -152,7 +161,8 @@ const PollPage = (props) => {
 const mapStateToProps = ({ polls, users, authedUser }, props) => {
   const { id } = props.router.params;
   const poll = polls[id];
-  const author = users[poll.author];
+
+  const author = poll ? users[poll.author] : null;
   return {
     poll: poll ? formatPoll(poll, author, authedUser) : null,
     authedUser,
