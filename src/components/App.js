@@ -21,7 +21,9 @@ function App(props) {
   useEffect(() => {
     const checkAuth = async () => {
       if (!isLoading && !isAuthenticated) {
-        await loginWithRedirect();
+        await loginWithRedirect({
+          appState: { targetUrl: window.location.pathname },
+        });
       }
 
       if (!isLoading && isAuthenticated) {

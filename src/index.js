@@ -13,19 +13,33 @@ import reducer from "./reducers";
 
 const { domain, clientId } = getConfig();
 
+const Auth0ProviderWithRedirectCallback = ({ children, ...props }) => {
+  const navigate = useNavigate();
+  const onRedirectCallback = (appState) => {
+    console.log(appState);
+    navigate((appState && appState.targetUrl) || window.location.pathname);
+  };
+  return (
+    <Auth0Provider onRedirectCallback={onRedirectCallback} {...props}>
+      {children}
+    </Auth0Provider>
+  );
+};
+
 const store = configureStore({ reducer, middleware });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Auth0Provider
-    domain={domain}
-    clientId={clientId}
-    authorizationParams={{ redirect_uri: window.location.origin }}
-  >
-    <Provider store={store}>
-      <BrowserRouter>
+  <BrowserRouter>
+    <Auth0ProviderWithRedirectCallback
+      domain={domain}
+      clientId={clientId}
+      authorizationParams={{ redirect_uri: window.location.origin }}
+      redirectUri={window.location.origin}
+    >
+      <Provider store={store}>
         <App />
-      </BrowserRouter>
-    </Provider>
-  </Auth0Provider>
+      </Provider>
+    </Auth0ProviderWithRedirectCallback>
+  </BrowserRouter>
 );
