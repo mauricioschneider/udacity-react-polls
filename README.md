@@ -6,6 +6,12 @@ Final project for the Udacity React nanodegree. Scaffold built with create-react
 
 ### Auth0
 
+```
+Udacity Reviewers:
+
+The values to use in the configuration file described below are provided in the submission notes. You don't need to configure an Auth0 tenant.
+```
+
 This project uses Auth0 to handle authentication. Rename `auth_config.json.example` to `auth_config.json`, and replace the placeholder values with the configuration values for your Auth0 application.
 
 ### Packages
