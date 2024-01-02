@@ -1,7 +1,10 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { EyeIcon } from "@heroicons/react/20/solid";
+import {
+  HandThumbUpIcon,
+  PresentationChartBarIcon,
+} from "@heroicons/react/20/solid";
 import { formatPoll, formatDate } from "../utils/helpers";
 
 const Poll = (props) => {
@@ -38,8 +41,23 @@ const Poll = (props) => {
               to={`/questions/${poll.id}`}
               className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
             >
-              <EyeIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-              Show
+              {!poll.hasVoted ? (
+                <>
+                  <HandThumbUpIcon
+                    className="h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  <span>Vote</span>
+                </>
+              ) : (
+                <>
+                  <PresentationChartBarIcon
+                    className="h-5 w-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  <span>Results</span>
+                </>
+              )}
             </Link>
           </div>
         </div>
