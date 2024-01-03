@@ -3,7 +3,7 @@ import {
   useLocation,
   useNavigate,
   useParams,
-  redirect,
+  Navigate,
 } from "react-router-dom";
 import { CheckIcon } from "@heroicons/react/20/solid";
 
@@ -30,7 +30,7 @@ const PollPage = (props) => {
   const { dispatch, poll, authedUser } = props;
 
   if (!poll) {
-    return redirect("/404");
+    return <Navigate to="/404" />;
   }
 
   const handleVote = (e) => {
